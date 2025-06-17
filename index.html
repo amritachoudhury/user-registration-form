@@ -3,40 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New react</title>
+    <link rel="stylesheet"
+    href="https://use.typekit.net/cct8oiw.css">
+    <title>User Registration</title>
     <link rel="stylesheet" href="./index.scss" />
   </head>
   <body>
-    <div id="root">
-      <!-- <h1>Hello world</h1> -->
-    </div>
-    <!-- Using JS -->
-    <!-- <script>
-        const heading = document.createElement('h1')
-        heading.innerHTML = 'Hello world from javascript'
-
-        const root  = document.getElementById('root')
-        root.appendChild(heading)
-     </script> -->
-
-    <!-- Using react -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-
-    <script src="./App.js">
-    //   // element is a core thing of react. Hence it comes from the first library which is the core library.
-    //   const heading = React.createElement("h1", {}, "Hello world from react");
-    //   // After the above statement, you need to tell react where to render this heading
-    //   // so we first create a root inside react where react can do all the DOM stuff
-    //   // dom is comes from the second library which is the react-dom library.
-    //   const root = ReactDOM.createRoot(document.getElementById('root'));
-    //   root.render(heading)
-    </script>
+    <div id="root"></div>
+    <script type="module" src="./src/App.js"></script>
   </body>
 </html>

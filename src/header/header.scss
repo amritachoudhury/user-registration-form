@@ -1,0 +1,26 @@
+.desktop-nav-items {
+  @media screen and (max-width: 1023.999px) {
+    display: none;
+  }
+}
+
+.image {
+  background: url("assets/images/just-react.svg") no-repeat;
+  width: 80px;
+  height: 80px;
+}
+
+.side-nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 24px;
+  // border-radius: 10px;
+  // height: 32px;
+  // &:hover {
+  //   background: #d8d8d8;
+  // }
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+}
