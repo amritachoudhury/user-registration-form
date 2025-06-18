@@ -10,7 +10,6 @@
   "author": "Amrita Choudhury",
   "license": "ISC",
   "devDependencies": {
-    
     "@babel/preset-react": "^7.27.1",
     "@parcel/babel-preset-env": "^2.15.2",
     "@parcel/transformer-inline-string": "^2.15.2",
@@ -26,7 +25,6 @@
     "react-router-dom": "^6.22.0",
     "react-select": "^5.10.1",
     "react-test-renderer": "^19.1.0"
-    
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

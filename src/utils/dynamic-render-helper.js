@@ -1,12 +1,17 @@
 import {
   POSSIBLE_NON_START_WITH_ZERO_NUMBER_FIELDS,
   POSSIBLE_TEXTAREA_FIELDS,
-  VALIDATORS
+  VALIDATORS,
 } from "./constants";
 
 export const getDefaultValues = (fields) =>
   fields.reduce((acc, currVal) => {
-    acc[currVal.name] = currVal.type === "checkbox" ? false : "";
+    acc[currVal.name] =
+      currVal.type === "checkbox"
+        ? false
+        : currVal.type === "date"
+        ? new Date()
+        : "";
     return acc;
   }, {});
 
@@ -44,7 +49,12 @@ export const getRules = (field) => {
       if (field && field[res.validator]) {
         rules[res.validator] = {
           value: field[res.validator],
-          message: res.message + field[res.validator],
+          message:
+            field.name === "dob"
+              ? res.validator === "max"
+                ? 'Value cannot be so far in the future'
+                : 'Value cannot be so far in the past'
+              : res.message + field[res.validator],
         };
       } else {
         return;

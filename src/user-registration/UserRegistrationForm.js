@@ -3,7 +3,11 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { SCHEMA } from "../utils/constants";
-import { getDefaultValues, getRules, handleNumbersStartingWithZero } from "../utils/dynamic-render-helper";
+import {
+  getDefaultValues,
+  getRules,
+  handleNumbersStartingWithZero,
+} from "../utils/dynamic-render-helper";
 import DataPreview from "./DataPreview";
 
 export default function UserRegistrationForm() {
@@ -108,20 +112,39 @@ export default function UserRegistrationForm() {
                             ))}
                           </select>
                         );
-                      case 'textarea':
-                      return (
-                        <div className="textarea-container">
-                        <textarea
-                          {...controllerField}
-                          placeholder={`Enter ${ele.label.toLowerCase()}`}
-                          maxLength={ele.maxLength ?? null}
-                        >
-                        </textarea>
-                        {ele.maxLength ? <span className="textarea-limit">{controllerField.value.length}/{ele.maxLength}</span> : null}
-                        </div>
-                      )
+                      case "textarea":
+                        return (
+                          <div className="textarea-container">
+                            <textarea
+                              {...controllerField}
+                              placeholder={`Enter ${ele.label.toLowerCase()}`}
+                              maxLength={ele.maxLength ?? null}
+                            ></textarea>
+                            {ele.maxLength ? (
+                              <span className="textarea-limit">
+                                {controllerField.value.length}/{ele.maxLength}
+                              </span>
+                            ) : null}
+                          </div>
+                        );
+                      case "date":
+                        return (
+                          <div className="datepicker-container">
+                            <input
+                              type={ele.type}
+                              className="input-datepicker"
+                              max={ele.max}
+                              min={ele.min}
+                            />
+                            {errors[ele.name] &&
+                            errors[ele.name].message &&
+                            errors[ele.name].message.length ? (
+                              <p className="error-box">{errors[ele.name]?.message}</p>
+                            ) : null}
+                          </div>
+                        );
                       default:
-                        return null;
+                        return null
                     }
                   }}
                 />
@@ -130,13 +153,13 @@ export default function UserRegistrationForm() {
           </div>
         </section>
         <DataPreview
-        data={formData}
-        open={dialogOpen}
-        onClose={toggleDialog(false)}
-      />
+          data={formData}
+          open={dialogOpen}
+          onClose={toggleDialog(false)}
+        />
         <footer>
           <section className="btn-container">
-            <Button variant="outlined" onClick={handleReset}>
+            <Button type="reset" variant="outlined" onClick={handleReset}>
               CLEAR
             </Button>
             <Button

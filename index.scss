@@ -161,7 +161,6 @@ a {
 
 select {
   padding: 12px 16px;
-  
   border: 1px solid #d8dada !important;
   border-radius: 4px !important;
   text-overflow: ellipsis;
@@ -171,7 +170,7 @@ select {
 
   &:focus,
   &:focus-within {
-    outline: 1px solid #0089ec!important;
+    outline: 1px solid #0089ec !important;
   }
   &:hover {
     outline: none;
@@ -187,17 +186,17 @@ textarea,
 MuiInputBase-root {
   overflow: hidden;
   border: 1px solid #d8dada;
-    min-height: 48px;
-    width: 350px;
-    border-radius: 4px;
-    font-family: 'neue-haas-grotesk-text', sans-serif;
-    padding: 12px 16px;
-    resize: vertical;
-    z-index: 1;
+  min-height: 48px;
+  width: 350px;
+  border-radius: 4px;
+  font-family: "neue-haas-grotesk-text", sans-serif;
+  padding: 12px 16px;
+  resize: vertical;
+  z-index: 1;
 
-    &:focus,
+  &:focus,
   &:focus-within {
-    outline: 1px solid #0089ec!important;
+    outline: 1px solid #0089ec !important;
   }
   &:hover {
     outline: none;
@@ -208,7 +207,6 @@ MuiInputBase-root {
     border: 1px solid #0089ec !important;
   }
 }
-
 
 .MuiOutlinedInput-root {
   &:focus,
@@ -226,4 +224,15 @@ MuiInputBase-root {
       outline: none;
     }
   }
+}
+
+.error-box {
+  color: rgb(211, 47, 47);
+  font-family: "Roboto", "Helvetica", "Arial", "sans-serif";
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+  text-align: left;
+  margin: 3px 14px 0px;
 }
