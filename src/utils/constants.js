@@ -9,7 +9,7 @@ export const SCHEMA = {
       name: "gender",
       options: ["Male", "Female", "Other"],
     },
-    { label: "Address", type: "textarea", name: "address", maxLength: 120 },
+    { label: "Address", type: "textarea", name: "address", maxLength: 120, minLength: 2 },
     { label: "Subscribe", type: "checkbox", name: "subscribe" },
   ],
 };

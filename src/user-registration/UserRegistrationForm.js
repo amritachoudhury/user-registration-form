@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { SCHEMA } from "../utils/constants";
-import { getDefaultValues, getRules } from "../utils/dynamic-render-helper";
+import { getDefaultValues, getRules, handleNumbersStartingWithZero } from "../utils/dynamic-render-helper";
 import DataPreview from "./DataPreview";
 
 export default function UserRegistrationForm() {
@@ -13,7 +13,7 @@ export default function UserRegistrationForm() {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: getDefaultValues(),
+    defaultValues: getDefaultValues(SCHEMA.fields),
   });
 
   const [formData, setFormData] = useState(null);
@@ -25,11 +25,12 @@ export default function UserRegistrationForm() {
   };
 
   const onSubmit = (data) => {
+    data = handleNumbersStartingWithZero(data);
     setFormData(data);
   };
 
   const handleReset = () => {
-    reset(getDefaultValues());
+    reset(getDefaultValues(SCHEMA.fields));
     setFormData(null);
   };
 
@@ -57,7 +58,6 @@ export default function UserRegistrationForm() {
                           <TextField
                             {...controllerField}
                             type={ele.type}
-                            // className="input-field"
                             placeholder={`Enter ${ele.label.toLowerCase()}`}
                             error={
                               errors[ele.name] &&

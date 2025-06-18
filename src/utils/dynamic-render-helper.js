@@ -1,96 +1,56 @@
-import { SCHEMA, VALIDATORS } from "./constants";
+import {
+  POSSIBLE_NON_START_WITH_ZERO_NUMBER_FIELDS,
+  POSSIBLE_TEXTAREA_FIELDS,
+  VALIDATORS
+} from "./constants";
 
-export const getDefaultValues = () =>
-  SCHEMA.fields.reduce((acc, currVal) => {
+export const getDefaultValues = (fields) =>
+  fields.reduce((acc, currVal) => {
     acc[currVal.name] = currVal.type === "checkbox" ? false : "";
     return acc;
   }, {});
 
-  
+export const handleNumbersStartingWithZero = (data) => {
+  POSSIBLE_NON_START_WITH_ZERO_NUMBER_FIELDS.map((numberField) => {
+    if (!!data[numberField] && data[numberField].length) {
+      data[numberField] = Number(data[numberField]).toString();
+    }
+  });
+  return data;
+};
+
+export const handleNewLineInTextArea = (data) => {
+  POSSIBLE_TEXTAREA_FIELDS.map((textareaField) => {
+    if (!!data[textareaField]) {
+      data[textareaField] = data[textareaField]?.includes("\n")
+        ? data[textareaField]?.replaceAll("\n", "<br />")
+        : data[textareaField];
+    }
+  });
+  return data;
+};
 
 export const getRules = (field) => {
+  let rules = {};
 
-  if(!VALIDATORS.some(res => Object.keys(field).includes(res.validator))) {
-    return
+  if (!VALIDATORS.some((res) => Object.keys(field).includes(res.validator))) {
+    return rules;
   }
 
-  let rules = {}
-
-  VALIDATORS.map(validator => {
-    rules[validator.validator] = validator.validator === 'required' ? '' : {
-      value: 0,
-      message: ''
-    }
-  })
-  //  = {
-  //   required: "",
-  //   minLength: {
-  //     value: 0,
-  //     message: "",
-  //   },
-  //   min: {
-  //     value: 0,
-  //     message: "",
-  //   },
-  //   max: {
-  //     value: 0,
-  //     message: "",
-  //   },
-  //   minRows: {
-  //     value: 0,
-  //     message: "",
-  //   },
-  //   maxRows: {
-  //     value: 0,
-  //     message: "",
-  //   },
-  // };
-
-  // if (!VALIDATORS.some((validator) => Object.keys(field).includes(validator))) {
-  //   return;
-  // }
-
-  VALIDATORS.map(res => {
-    if (field.required && res.validator === 'required') {
-      rules.required = res.message
+  VALIDATORS.map((res) => {
+    if (field.required && res.validator === "required") {
+      rules.required = res.message;
     } else {
       if (field && field[res.validator]) {
         rules[res.validator] = {
           value: field[res.validator],
-          message: res.message + field[res.validator]
-        }
-      }
-      else {
-        return
+          message: res.message + field[res.validator],
+        };
+      } else {
+        return;
       }
     }
-  })
-
-  // if (field.required) {
-  //   rules.required = "Field cannot be empty.";
-  // }
-
-  // if (field.minLength) {
-  //   rules.minLength = {
-  //     value: field.minLength,
-  //     message: `Please provide at least ${field.minLength} characters`,
-  //   };
-  // }
-
-  // if (field.min) {
-  //   rules.min = {
-  //     value: field.min,
-  //     message: `Value cannot be less than ${field.min}`,
-  //   };
-  // }
-
-  // if (field.max) {
-  //   rules.max = {
-  //     value: field.max,
-  //     message: `Value cannot be more than ${field.max}`,
-  //   };
-  // }
+  });
 
   return rules;
 };
-
