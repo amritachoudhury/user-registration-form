@@ -1,5 +1,5 @@
 .desktop-nav-items {
-  @media screen and (max-width: 1023.999px) {
+  @media screen and (max-width: 1279px) {
     display: none;
   }
 }
@@ -15,7 +15,7 @@
   justify-content: flex-end;
   align-items: center;
   margin: 24px;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     display: none;
   }
 }

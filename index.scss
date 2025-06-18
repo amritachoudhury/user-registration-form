@@ -71,7 +71,7 @@ ul {
   grid-template-columns: auto auto auto auto;
   display: grid;
   padding-left: 0;
-  @media screen and (max-width: 1023.999px) {
+  @media screen and (max-width: 1279px) {
     display: flex;
     flex-direction: column;
   }

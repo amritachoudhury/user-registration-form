@@ -41,7 +41,7 @@ export default function UserRegistrationForm() {
           <div className="form-container">
             <h2>{SCHEMA.title}</h2>
             {SCHEMA.fields.map((ele) => (
-              <div key={ele.name} className="search-bar">
+              <div key={ele.name} className="form-field-container">
                 <label className="form-label">
                   {ele.label}
                   {ele.required && <p className="required-asterisk">&nbsp;*</p>}
