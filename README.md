@@ -4,7 +4,7 @@ A dynamic react application for user registration, featuring a responsive UI, fo
 
 ## Features
 
-- Dynamic form rendering based on a configurable schema.
+- Dynamic form rendering based on a configurable schema with configurable validators.
 - Real time validation for required fields, min / max values and min / max length.
 - Responsive design for desktop and mobile devices.
 - Data preview dialog after submission.
@@ -19,7 +19,7 @@ npm v10.2.3
 
 ### Installation
 
- 1. Clone the repository:
+ 1. Clone the repository and traverse to the root of the repository:
     `git clone https://github.com/amritachoudhury/user-registration-form.git`
     `cd user-registration-form`
 
@@ -41,10 +41,10 @@ npm v10.2.3
 - Click `SUBMIT` to preview your data in a dialog.
 - Use navigation links to explore other pages.
 
-## Test
+## Testing
 
  1. Run test: `npm run test`
- 2. Coverage may be checked in `coverage/index.html`
+ 2. Coverage reports are available in `coverage/index.html`
 
 ## Technologies used
 
