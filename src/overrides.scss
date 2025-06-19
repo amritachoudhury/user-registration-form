@@ -203,6 +203,11 @@ body {
     &:hover {
       border: 1px solid #0089ec !important;
     }
+    
+    &:invalid {
+        border-color: rgb(211, 47, 47) !important;
+      
+    }
   }
   
   .MuiOutlinedInput-root {
@@ -219,6 +224,11 @@ body {
         border-style: solid !important;
         border-width: 1px;
         outline: none;
+      }
+    }
+    &:invalid {
+      fieldset {
+        border-color: rgb(211, 47, 47) !important;
       }
     }
   }

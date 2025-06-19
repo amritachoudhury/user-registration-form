@@ -49,12 +49,7 @@ export const getRules = (field) => {
       if (field && field[res.validator]) {
         rules[res.validator] = {
           value: field[res.validator],
-          message:
-            field.name === "dob"
-              ? res.validator === "max"
-                ? 'Value cannot be so far in the future'
-                : 'Value cannot be so far in the past'
-              : res.message + field[res.validator],
+          message: res.message + field[res.validator],
         };
       } else {
         return;

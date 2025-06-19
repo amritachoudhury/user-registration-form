@@ -119,30 +119,15 @@ export default function UserRegistrationForm() {
                               {...controllerField}
                               placeholder={`Enter ${ele.label.toLowerCase()}`}
                               maxLength={ele.maxLength ?? null}
+                              aria-invalid={errors[ele.name] &&
+                                errors[ele.name].message &&
+                                errors[ele.name].message.length > 0}
                             ></textarea>
                             {ele.maxLength ? (
                               <span className="textarea-limit">
                                 {controllerField.value.length}/{ele.maxLength}
                               </span>
                             ) : null}
-                            {errors[ele.name] &&
-                            errors[ele.name].message &&
-                            errors[ele.name].message.length ? (
-                              <p className="error-box">
-                                {errors[ele.name]?.message}
-                              </p>
-                            ) : null}
-                          </div>
-                        );
-                      case "date":
-                        return (
-                          <div className="datepicker-container">
-                            <input
-                              type={ele.type}
-                              className="input-datepicker"
-                              max={ele.max}
-                              min={ele.min}
-                            />
                             {errors[ele.name] &&
                             errors[ele.name].message &&
                             errors[ele.name].message.length ? (
