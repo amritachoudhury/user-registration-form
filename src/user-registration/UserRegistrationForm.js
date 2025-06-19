@@ -119,9 +119,6 @@ export default function UserRegistrationForm() {
                               {...controllerField}
                               placeholder={`Enter ${ele.label.toLowerCase()}`}
                               maxLength={ele.maxLength ?? null}
-                              aria-invalid={errors[ele.name] &&
-                                errors[ele.name].message &&
-                                errors[ele.name].message.length > 0}
                             ></textarea>
                             {ele.maxLength ? (
                               <span className="textarea-limit">
