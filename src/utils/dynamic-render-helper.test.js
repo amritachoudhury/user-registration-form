@@ -8,6 +8,7 @@ import {
 describe("dynamic-render-helper", () => {
   describe("getDefaultValues", () => {
     test("should return default value based on input config", () => {
+      const today = new Date();
       const fields = [
         {
           label: "Name",
@@ -31,6 +32,7 @@ describe("dynamic-render-helper", () => {
           minLength: 2,
         },
         { label: "Subscribe", type: "checkbox", name: "subscribe" },
+        { label: 'Any date', type: 'date', name: 'date1'}
       ];
       const defaultValues = getDefaultValues(fields);
       expect(defaultValues).toEqual({
@@ -39,6 +41,7 @@ describe("dynamic-render-helper", () => {
         gender: "",
         address: "",
         subscribe: false,
+        date1: today
       });
     });
   });
