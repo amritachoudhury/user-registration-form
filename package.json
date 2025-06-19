@@ -12,6 +12,7 @@
   "devDependencies": {
     "@babel/preset-react": "^7.27.1",
     "@parcel/babel-preset-env": "^2.15.2",
+    "@parcel/optimizer-terser": "^2.15.2",
     "@parcel/transformer-inline-string": "^2.15.2",
     "@parcel/transformer-sass": "^2.15.2",
     "@testing-library/jest-dom": "^6.6.3",
