@@ -125,6 +125,13 @@ export default function UserRegistrationForm() {
                                 {controllerField.value.length}/{ele.maxLength}
                               </span>
                             ) : null}
+                            {errors[ele.name] &&
+                            errors[ele.name].message &&
+                            errors[ele.name].message.length ? (
+                              <p className="error-box">
+                                {errors[ele.name]?.message}
+                              </p>
+                            ) : null}
                           </div>
                         );
                       case "date":
@@ -139,12 +146,14 @@ export default function UserRegistrationForm() {
                             {errors[ele.name] &&
                             errors[ele.name].message &&
                             errors[ele.name].message.length ? (
-                              <p className="error-box">{errors[ele.name]?.message}</p>
+                              <p className="error-box">
+                                {errors[ele.name]?.message}
+                              </p>
                             ) : null}
                           </div>
                         );
                       default:
-                        return null
+                        return null;
                     }
                   }}
                 />

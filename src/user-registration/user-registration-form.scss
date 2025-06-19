@@ -71,3 +71,21 @@
 .output-container {
   display: flex;
 }
+
+.input-datepicker {
+      border: 1px solid #d8dada;
+      font-family: "neue-haas-grotesk-text", sans-serif;
+
+      &:focus,
+    &:focus-within {
+      outline: 1px solid #0089ec !important;
+    }
+    &:hover {
+      outline: none;
+    }
+  
+    &:focus,
+    &:hover {
+      border: 1px solid #0089ec !important;
+    }
+}
