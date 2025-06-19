@@ -1,6 +1,10 @@
 # User registration Form
 
-A dynamic react application for user registration, featuring a responsive UI, form validation and data preview, built with React, rect-hook-form, Material UI, React Router.
+- A dynamic react application for user registration, featuring a responsive UI, form validation and data preview, built with React, rect-hook-form, Material UI, React Router.
+
+## Short demo and a short code walkthrough
+
+- A short video walkthrough is available in `assets\demo-video\Screenshare - 2025-06-18 2_43_09 PM.mp4`.
 
 ## Features
 
@@ -14,8 +18,8 @@ A dynamic react application for user registration, featuring a responsive UI, fo
 
 ### Prerequisites
 
-Node.JS v18.19.0 (works on any 18+ version.)
-npm v10.2.3
+- Node.JS v18.19.0 (works on any 18+ version.)
+- npm v10.2.3
 
 ### Installation
 
