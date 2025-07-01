@@ -1,0 +1,51 @@
+HOC are those components that takes a component, enhances it and returns the enhanced component.
+
+  // If emailVerified, return a HOC with Verified label in card.
+  // Following is the HOC.
+  export const VerifiedUserCard = (userData) => {
+    // HOC is nothing but a function that returns a component, which is basically a function.
+    // Following is the component being returned by HOC.
+    return () => {
+      // in this returned functional component the actual jsx is contained.
+      return (<>
+      <label>Verified</label>
+      <UserCard />
+      </>)
+    }
+  }
+
+  We use HOC to maintain purity of functional components.
+  
+  Controlled and uncontrolled components.
+  Lifting state Up.
+  ----------------------
+  When parent controls the children via props, then the child component becomes a CONTROLLED component.
+
+  When a child component maintains its own state instead of the state being controlled by the parent, then it is called UNCONTROLLED component.
+
+  We can also pass a set function to a child component with relevant parameter. Then in that child component just call this set function in any onClick or onChange as required. This will set the state in the parent with whatever value u passed from parent to child.
+  So basically, you're calling a parent function in the child based on some click or change event in the child.
+
+  Props drilling
+  ----------------------------
+  When you pass props from parent -> child -> another child -> another child and so on, just to send the data to the actual intended child. This is not good because if the intermediate children don't need the props then what's the point of passing those intermediate children these props. (Same as angular).
+  To avoid this we use React context.
+
+  React context
+  ------------------------
+  Keeping data at a global level in a central store which can then be accessed by any component at any level without having to access said data via props drilling.
+  To create context we use React's createContext.
+  To use that context context we use useContext.
+
+  In a class based component, we do not have hooks. So, here, we can write <Context name>.Consumer to access that context.
+  Example:
+  Wherever u want to use ContextHook in class based components you have to use a callback like below:
+  <div>
+    Welcome
+    <UserContext.Consumer>{(data) => {
+      // Access data
+      return (<h4>{data.loggedInUser}</h4>)
+    }}</UserContext.Consumer>
+  </div>
+
+  To update context information we will use <Context name>.Provider and use this to wrap it around the component where we want to update store values.

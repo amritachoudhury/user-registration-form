@@ -1,0 +1,35 @@
+{
+    "Data": {
+      "UserName": "admin2@rip.com",
+      "FirstName": "admin",
+      "Surname": "rip",
+      "PhoneNumber": null,
+      "PhoneCountry": 840,
+      "PhoneCountryCode": "1",
+      "UserLanguage": "en-GB",
+      "RegionId": 826,
+      "FullName": "Amrita Choudhury",
+      "DriverFullName": "rip, admin",
+      "RowGuid": "949fc67a-e456-46e9-881d-45eaf0ec2e1a",
+      "LandingPage": "/",
+      "UserType": 2,
+      "AndroidTimeZoneId": "America/Los_Angeles",
+      "IosTimeZoneId": "America/Los_Angeles",
+      "EmailAddress": "admin2@rip.com"
+    },
+    "Message": {
+      "Version": {
+        "_Major": 1,
+        "_Minor": 1,
+        "_Build": -1,
+        "_Revision": -1
+      },
+      "Content": null,
+      "StatusCode": 200,
+      "ReasonPhrase": "OK",
+      "Headers": [],
+      "RequestMessage": null,
+      "IsSuccessStatusCode": true
+    }
+  }
+  

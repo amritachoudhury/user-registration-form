@@ -1,0 +1,28 @@
+If no dependency array, useEffect is called after each render.
+
+If dependency array is empty, useEffect is called only on initial render. just once after the first render.
+
+If we provide a parameter within the dependency array, then useEffect is called only when dependency changes.
+
+rafce
+client side routing
+
+
+
+
+
+
+
+// chunking
+// dynamic bundling
+// code splitting
+// lazy loading
+// on demand loading
+// dynamic import
+
+break the js file that renders on the browser into smaller logical chunks so that loading size decreses and process is sped up.
+So that the load isn't put on just 1 bundle.
+So that the js file doesn't become so heave such that the request for that file takes a lot of time to get in to the browser. 
+During lazy load, react tries to render the lazily loaded component as soon as we click on the link requesting it. However, if it is the first time that we requested it, then the js file for that component is not available in the browser.
+To handle such a scenario, we use Suspense. We wrap the lazily loaded component with <Suspense>
+Then, give a fallback to the Suspense so that react knows what to load while the main component does not become available.

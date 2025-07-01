@@ -160,6 +160,42 @@ describe("dynamic-render-helper", () => {
       });
     });
 
+    test("should return required rule, minLength rule and min rule when both are available", () => {
+      const field = { required: true, max: 10 };
+      const rules = getRules(field);
+      expect(rules).toEqual({
+        required: "Field cannot be empty",
+        max: {
+          value: 10,
+          message: "Value cannot be more than 10",
+        },
+      });
+    });
+
+    test("should return required rule, minLength rule and max rule when both are available", () => {
+      const field = { required: true, max: 10 };
+      const rules = getRules(field);
+      expect(rules).toEqual({
+        required: "Field cannot be empty",
+        max: {
+          value: 10,
+          message: "Value cannot be more than 10",
+        },
+      });
+    });
+
+    test("should return required rule, max rule and min rule when both are available", () => {
+      const field = { required: true, max: 10 };
+      const rules = getRules(field);
+      expect(rules).toEqual({
+        required: "Field cannot be empty",
+        max: {
+          value: 10,
+          message: "Value cannot be more than 10",
+        },
+      });
+    });
+
     test("should return minLength rule and min value rule when both are available", () => {
       const field = { minLength: 4, min: 10 };
       const rules = getRules(field);
@@ -190,6 +226,26 @@ describe("dynamic-render-helper", () => {
       });
     });
 
+    
+    test("should return minLength rule, min rule and max value rule when all those are available", () => {
+      const field = { minLength: 4, min: 1, max: 10 };
+      const rules = getRules(field);
+      expect(rules).toEqual({
+        minLength: {
+          value: 4,
+          message: "Minimum length is 4",
+        },
+        min: {
+          value: 1,
+          message: "Value cannot be less than 1",
+        },
+        max: {
+          value: 10,
+          message: "Value cannot be more than 10",
+        },
+      });
+    });
+
     test("should return min rule and max value rule when both are available", () => {
       const field = { min: 4, max: 10 };
       const rules = getRules(field);
@@ -203,7 +259,7 @@ describe("dynamic-render-helper", () => {
           message: "Value cannot be more than 10",
         },
       });
-    });
+    });   
 
     test("should return all rules when all are available", () => {
       const field = { required: true, max: 10, min: 2, minLength: 1 };

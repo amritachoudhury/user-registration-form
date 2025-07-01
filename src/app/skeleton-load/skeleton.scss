@@ -1,0 +1,22 @@
+.skeleton-card {
+    height: 300px;
+    width: 250px;
+    background: rgb(239, 241, 246) no-repeat;
+  background-color: #cfcfcf;
+    padding: 20px;
+    border: 1px solid;
+    border-color: #d8dada;
+    box-shadow: none;
+    border-radius: 8px;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+    margin-right: 24px;
+    margin-bottom: 24px;
+}
+
+.skeleton-container {
+    display: flex;
+      flex-wrap: wrap;
+      margin: 0 48px;
+}
