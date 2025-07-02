@@ -48,7 +48,8 @@ const appRouter = createBrowserRouter([
         // children: [
         //   {
         //     path: "user/:id",
-        //     element: <UserDetail />
+        //     index: false,
+        //     element: <Suspense fallback={<h1>LOADING....</h1>}><UserDetail /></Suspense>
         //   },
         // ],
       },
