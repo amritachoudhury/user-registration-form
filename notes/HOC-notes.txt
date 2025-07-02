@@ -49,3 +49,4 @@ HOC are those components that takes a component, enhances it and returns the enh
   </div>
 
   To update context information we will use <Context name>.Provider and use this to wrap it around the component where we want to update store values.
+  If there is no Provider for this context above, the value argument will be equal to the defaultValue that was passed to createContext() 

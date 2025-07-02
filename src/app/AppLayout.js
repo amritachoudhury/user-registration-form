@@ -11,7 +11,7 @@ export default function AppLayout() {
   const [userInfo, setUserInfo] = useState();
 
   const fetchUserInfo = async () => {
-    const data = userMock.Data;
+    const data = userMock;
     setUserInfo(data);
   };
 
@@ -23,6 +23,7 @@ export default function AppLayout() {
     <UserContext.Provider
       value={{
         loggedInUser: userInfo?.FullName,
+        setUserInfo
       }}
     >
       <Header />

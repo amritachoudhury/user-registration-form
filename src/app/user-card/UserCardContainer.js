@@ -1,10 +1,11 @@
 import { Button } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, use } from "react";
 import Skeleton from "../skeleton-load/Skeleton";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useUsersData from "../utils/useUsersData";
-import UserCard, {verifiedUserCard} from "./UserCard";
+import UserCard, { verifiedUserCard } from "./UserCard";
 import UserNotFound from "./UserNotFound";
+import UserContext from "../utils/UserContext";
 
 export default function UserCardContainer() {
   const [filteredUserDataList, setFilteredUserDataList] = useState([]);
@@ -13,6 +14,7 @@ export default function UserCardContainer() {
   const userDataList = useUsersData();
   const isOffline = useOnlineStatus();
   const VerifiedUserCard = verifiedUserCard(UserCard);
+  const userContext = useContext(UserContext);
 
   // console.log('List: ', filteredUserDataList);
 
@@ -30,6 +32,7 @@ export default function UserCardContainer() {
           placeholder="Enter search string"
           onChange={(e) => {
             setSearchString(e.target.value);
+            userContext.setUserInfo({ FullName: e.target.value });
           }}
         />
         <Button
@@ -44,11 +47,13 @@ export default function UserCardContainer() {
         <Button
           variant="contained"
           onClick={() => {
-            const filteredList = userDataList.filter(
-              (x) =>
-                x.firstName.includes(searchString) ||
-                x.lastName.includes(searchString)
-            );
+            const filteredList = searchString.length
+              ? userDataList.filter(
+                  (x) =>
+                    x.firstName.includes(searchString) ||
+                    x.lastName.includes(searchString)
+                )
+              : userDataList;
             setFilteredUserDataList(filteredList);
             setIsUserNotFound(!filteredList.length);
           }}
@@ -62,12 +67,14 @@ export default function UserCardContainer() {
         <Skeleton />
       ) : (
         <div className="user-card-container">
-        {filteredUserDataList.map((userData) => {
-          /** if emailVerified return HOC VerifiedUserCard componet else return normal UserCard component */
-         return userData.emailVerified ? 
-            <VerifiedUserCard key={userData.id} userData={userData} /> :
-          <UserCard key={userData.id} userData={userData} />
-        })}
+          {filteredUserDataList.map((userData) => {
+            /** if emailVerified return HOC VerifiedUserCard componet else return normal UserCard component */
+            return userData.emailVerified ? (
+              <VerifiedUserCard key={userData.id} userData={userData} />
+            ) : (
+              <UserCard key={userData.id} userData={userData} />
+            );
+          })}
         </div>
       )}
     </div>

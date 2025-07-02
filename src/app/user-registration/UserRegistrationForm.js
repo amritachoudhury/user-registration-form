@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { SCHEMA } from "../utils/constants";
 import {
@@ -9,6 +9,7 @@ import {
   handleNumbersStartingWithZero,
 } from "../utils/dynamic-render-helper";
 import DataPreview from "./DataPreview";
+import UserContext from "../utils/UserContext";
 
 export default function UserRegistrationForm() {
   const {
@@ -23,6 +24,8 @@ export default function UserRegistrationForm() {
   const [formData, setFormData] = useState(null);
 
   const [dialogOpen, setDialogOpen] = useState(false);
+
+  const userContext = useContext(UserContext);
 
   const toggleDialog = (isOpen) => () => {
     setDialogOpen(isOpen);
@@ -79,6 +82,15 @@ export default function UserRegistrationForm() {
                                   event.key === "+")
                               ) {
                                 event.preventDefault();
+                              } else if (
+                                ele.type === "text" &&
+                                (ele.name === "name" ||
+                                  ele.name === "email" ||
+                                  ele.name === "username")
+                              ) {
+                                userContext.setUserInfo({
+                                  FullName: controllerField.value,
+                                });
                               }
                             }}
                           />
