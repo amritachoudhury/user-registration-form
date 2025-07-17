@@ -1,0 +1,35 @@
+We are using RTK - Redux toolkit, and not vanilla redux.
+############## IMMER ######################
+## In vanilla redux, the reducers are pure functions. We do not mutate the state. We destructure the state to make a new copy of the state, perform operations on this new copy, and then retrun this new copy.
+## But in redux-toolkit we directly mutate the state. We are able to do this because behind the scenes, redux-toolkit is doing all of that instead of asking developers to handle the purity. Redux uses Immer library to handle that. Immer checks difference between original state and the new state and gives us back the new state which is the immutable state, that is the new copy of the state.
+
+This means lesser boilerplate.
+
+To write into redux store.
+1. Dispatch an action
+2. Action calls a reducer.
+3. Reducer updates the slice of our redux store.
+
+To read from store.
+We use Selector to read data from store.
+1. Component subscribes to the selector. When selector updates, component is modified.
+
+Steps to create RTK
+1. install @reduxjs/toolkit and react-redux
+2. Create our store using configureStore from @Reactjs/toolkit.
+3. Provide that store to the application using Provider from react-redux and then wrapping our entire application in this provider. We will pass the store created in the previous step as a prop to this Provider.
+4. create a slice using createSlice from @Reactjs/toolkit. The createSlice function takes a configuration to create a slice.
+    A. The first config that we need to Provide is name of slice.
+    B. The second config is the initial state.
+    C. Reducers. Here we write reducer functions corresponding to each action.
+    D. Export two things from this slice: Actions and reducer.
+5. Add this slice to the store created on step 2.
+    The atore contains all the slices needed in our app. So, all the slices need to be added to a reducer object of the store.
+6. Read the store by subscribing to the store from the component.
+    A. Use the useSelector hook in the component ans specify the slice of the store that you want to read.
+7. Dispatch an action.
+    A. use the useDispatch hook to dispatch an action from a component.
+    B. import the necessary action from the slice and pass it as an argument to the dispatch.
+
+Redux DEV Tools
+

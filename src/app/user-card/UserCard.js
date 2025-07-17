@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { USER_DETAIL } from "../utils/constants";
 
   // If emailVerified, return a HOC with Verified label in card.
   // Following is the HOC.
@@ -29,7 +30,7 @@ export default function UserCard(userData) {
       <h4>Age: {data.age}</h4>
       <Button
         onClick={() => {
-          navigateToUser(`/user/${data.id}`)
+          navigateToUser(`/${USER_DETAIL}/${data.id}`)
         }}
       >
         View details

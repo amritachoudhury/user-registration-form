@@ -1,11 +1,11 @@
 import { Button } from "@mui/material";
-import { useEffect, useState, useContext, use } from "react";
+import { useContext, useEffect, useState } from "react";
 import Skeleton from "../skeleton-load/Skeleton";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 import useUsersData from "../utils/useUsersData";
 import UserCard, { verifiedUserCard } from "./UserCard";
 import UserNotFound from "./UserNotFound";
-import UserContext from "../utils/UserContext";
 
 export default function UserCardContainer() {
   const [filteredUserDataList, setFilteredUserDataList] = useState([]);
@@ -15,8 +15,6 @@ export default function UserCardContainer() {
   const isOffline = useOnlineStatus();
   const VerifiedUserCard = verifiedUserCard(UserCard);
   const userContext = useContext(UserContext);
-
-  // console.log('List: ', filteredUserDataList);
 
   useEffect(() => {
     setFilteredUserDataList(userDataList);

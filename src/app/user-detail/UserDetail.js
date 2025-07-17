@@ -1,12 +1,14 @@
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
-  AccordionSummary,
   AccordionDetails,
+  AccordionSummary,
   Button,
 } from "@mui/material";
 import { useState } from "react";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { addUser } from "../data-store/savedUsersSlice";
 import Skeleton from "../skeleton-load/Skeleton";
 import { USER_CARD } from "../utils/constants";
 import useUserData from "../utils/useUserData";
@@ -19,6 +21,8 @@ export default function UserDetail() {
   const params = useParams();
 
   const userData = useUserData(params.id);
+
+  const dispatch = useDispatch();
 
   return !userData ? (
     <Skeleton />
@@ -78,6 +82,14 @@ export default function UserDetail() {
           <Button onClick={() => navigateBackTo("/" + USER_CARD)}>
             back to cards
           </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className="submit"
+            onClick={() => {
+              dispatch(addUser(userData));
+            }} 
+          >Save this user for later</Button>
         </section>
       </footer>
     </>

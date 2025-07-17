@@ -49,3 +49,5 @@ export const REGISTER_NEW_USER_PATH = "register-new-user";
 export const ABOUT_US = "about-us";
 export const CONTACT_US = "contact-us";
 export const USER_CARD = 'user-cards'
+export const USER_DETAIL = 'user';
+export const SAVED_USERS = 'saved-users';

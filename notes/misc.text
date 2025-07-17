@@ -1,0 +1,13 @@
+useRef - When we want a variable to not rerender when the value is updated. This can be attained using let.
+    But if the component rerenders, then the let variable will reset to initial. 
+    USEREF is needed in such a situation when we want the value to persist between rerenders but the change of this value should not cause the compoenent to rerender.
+    const ref - useRef(0) => ref = {current: 0}
+    So, we access the ref variable using ref.current
+
+
+useMemo - When we do a heavy operation (like calculate nth prime number) within the body of a component, then for every state change, this heavy operation will be carried out, since the component would rerender.
+In order to prevent this from happening, we perform the heavy operation within the useMemo hook with it's dependency.
+For examplae, on change of an input box's value, whatever number you have written in the input box, a function will calculate that nth prime number. So, if input box is 1, fn returns 1st prime number. If i/p box is 5 it returns 5th prime number. If it is 79, then calculates 79th prime number. If it is 123456789, then fn returns 123456789th prime number.
+The problem is with if we have another state variable that performs a simple operation, like toggle between light and dark theme, then every time the state of the theme changes, this heavy calculation os also carried out. But of this prime calculation fn is passed as an argument to useMemo with the text change of the i/p box as the dependency, the theme change does not calculate the preime number even though it rerenders the component. The prime number will remain unchanged.
+
+usCallback - Similar to useMemo, except we pass the fn as a callback directly as the first parameter. 

@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import * as userMock from "../assets/user-mock.json";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./data-store/appStore";
 
 export default function AppLayout() {
   // Authentication code
@@ -20,14 +22,16 @@ export default function AppLayout() {
   }, []);
 
   return (
-    <UserContext.Provider
-      value={{
-        loggedInUser: userInfo?.FullName,
-        setUserInfo
-      }}
-    >
-      <Header />
-      <Outlet />
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider
+        value={{
+          loggedInUser: userInfo?.FullName,
+          setUserInfo,
+        }}
+      >
+        <Header />
+        <Outlet />
+      </UserContext.Provider>
+    </Provider>
   );
 }
