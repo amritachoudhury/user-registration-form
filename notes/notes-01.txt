@@ -1,0 +1,42 @@
+Browser understands only JS due to js engine. But browsers do not understand react code. So, first of all react needs to be configured into our project.
+1. CDN react -> There are cdn links which host the react libraries. We add this cdn link to our code to pull that react into our project. 
+This is not preferred since we have to keep hitting the url. Also, in case of upgrade of react versions we have to keep updating the links.
+	CDN of react gives us 2 source files:
+	A - Core react
+	B - React dom -> This is the react library useful for DOM openrations.
+2. Installing react in packages
+
+// Move everything written within second scripts of index.html here and in the script add src pointing here
+
+// element is a core thing of react. Hence it comes from the first library which is the core library.
+// dom is comes from the second library which is the react-dom library.
+
+// created nested html structure
+
+React.createElement arguments:
+// The first is the tag. Second is props. Third is children
+// After the above statement, you need to tell react where to render this heading
+// so we first create a root inside react where react can do all the DOM stuff
+It returns a react element and not an html element. a react element is a js object which browser understands. 
+This JS object then gets rendered as an HTML element
+You can console.log(heading1) to see.
+
+Root.render()
+// the render method takes a js object as an input and converts into a tag which can be put in the DOM
+// The render method always replaces anything that is already present in the element where you are renedering. 
+That's why at a time for ele1.render(xxx) and ele1.render(yyy), the second one will be visible on browser.
+
+Target:
+
+/**
+ * <div id="parent">
+ *      <div id="child">
+ *          <h1></h1>
+ *          <h2></h2>
+ *      </div>
+ *      <div id="child">
+ *          <h1></h1>
+ *          <h2></h2>
+ *      </div>
+ * </div>
+ */

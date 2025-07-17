@@ -1,0 +1,38 @@
+Create pkg.json using npm init and then interactive options. But this does not create lock file. Lock file gets created only when we do install.
+
+
+pkg.json is a config file for npm.
+
+Karet - Automatically installs mminor versions.
+Tilde - Automatically installs major versions. Hence avoid.
+
+Package lock is used for keeping atrack of the versions. That's why even with karet the lock file doesn't automatically change.
+So, while pkg.json keeps an approx version due to the karet or tilde, pkg-lock keeps the exact version cause it doesn't have karet or tilde.
+The pkg-lock contains an integrity field for every dependency. This ensures whatever version is on my local, is the same that is there in prod. So that we never run into a scenario where a dependency works on local but bugs out in prod.
+
+Transitive dependency - When our dependencies (in pkg.json) are dependent on other dependencies.
+
+The node modules is huge. We don't want to push it. Hence it is kept in .gitignore
+
+A bundler bundles or packages our app so that the app can be shipped to prod.
+Examples: Webpack, Parcel, Wheat
+create-react-app uses webpack and babel behind the scenes for setting things up.
+
+Here we are using parcel for bundling, reducing chunk sizes and minification
+
+npx - for executing a package
+npm - for installing a package
+
+Install React and React-dom using parcel and then we can import these in the App.js and safely remove the CDN from index.html. 
+But in doing so we get an error: @parcel/transformer-js: Browser scripts cannot have imports or exports.
+This happens because browser is treating the app.js file like a regular script. So, we have to tell it that it is a module instead. We do this by specifying type="module" in the index.html's script tag where we inject app.js
+
+Parcel and other build tools uses a file watching algorithm. Whenever there is a change HMR happens making development process smoother. It caches the bundles (.parcel-cache) resulting in faster builds. Image optimization is also done. It also bundles or minifies all the files. It will compress, remove white spaces. Parcel also does
+- consistent hashing
+It also performs code splitting. Tree shaking. Transpilation. Lazy loading if u write code for lazy load.
+Differential bundling - My app can be opened on IE, Firefox, Chrome and their older versions. So, differential bundles enable the app to run smoothly on older browsers as well.
+Gives meaningful error messages via error handling.
+Best part is Parcel is a zero config tool. Can be used as it is from get go contrary to webpack.
+Different dev and prod bundles. This is because prod build takes a little more time than dev build, because optimization on Prod is more than that on dev.
+
+browserslist: Tells my app which all browsers it can run without any hitch.

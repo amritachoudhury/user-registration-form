@@ -1,0 +1,10 @@
+
+Transpilation:
+Converting code into a format that is understandable to browser so that the code can be rendered.
+Parcel uses Babel for transpiling a JSX code into js, because the browser's JS engine will be able to read this transpiled code.
+So, the JSX code gets transpiled by Babel into a react element -> which is a JS object that the browser understands. 
+This JS object then gets rendered as an HTML element
+Babel even transpiles ES6 code into older ES versions for older browsers to understand.
+Transpiler is SAME as JS Compiler. Different names same functions.
+
+XSS - Cross side scripting -> When malicious code is sent via any java script. Say you have an api call and you're using that data recieved from the response of the api call on your browser by passing it as argument or displaying it, basically it's js code so it is going to execute on the end user's browser and thus leaving the end user vulnerable, cause this malicious code could have been sent with the intent of reading browser data or cookies or local storage or session storage. However, JSX takes care of these injection attacks by first sanitizing any data that is wrapped within the curly braces.
