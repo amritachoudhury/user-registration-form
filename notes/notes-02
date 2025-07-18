@@ -15,7 +15,7 @@ Transitive dependency - When our dependencies (in pkg.json) are dependent on oth
 The node modules is huge. We don't want to push it. Hence it is kept in .gitignore
 
 A bundler bundles or packages our app so that the app can be shipped to prod.
-Examples: Webpack, Parcel, Wheat
+Examples: Webpack, Parcel, Vite
 create-react-app uses webpack and babel behind the scenes for setting things up.
 
 Here we are using parcel for bundling, reducing chunk sizes and minification
